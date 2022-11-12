@@ -77,5 +77,15 @@ public class ControladorPermisosRoles {
         return permisosRoles;
     }
 
+    @GetMapping("validar-permiso/rol/{id_rol}")
+    public PermisosRoles validarPermiso(@PathVariable String id_rol, @RequestBody Permiso infoPermiso) {
+        Permiso permiso = this.miRepositorioPermiso.getPermiso(infoPermiso.getUrl(), infoPermiso.getMetodo());
+        Rol rol=this.miRepositorioRol.findById(id_rol).orElse(null);
+        if (permiso != null && rol != null){
+            return this.miRepositorioPermisosRoles.getPermisoRol(permiso.get_id(), rol.get_id());
+        }else {
+            return null;
+        }
+    }
 
 }

@@ -1,1 +1,0 @@
-# RegistraduriaGrupo1BE

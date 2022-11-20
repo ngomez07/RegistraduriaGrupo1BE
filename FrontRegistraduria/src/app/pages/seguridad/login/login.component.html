@@ -1,0 +1,28 @@
+<div class="row container">
+    <div class="col-lg-6">
+      <nb-card>
+        <nb-card-header>Iniciar sesión</nb-card-header>
+        <nb-card-body>
+          <div class="row">
+            <div class="col-lg-2">
+              <label>Correo: </label>
+            </div>
+            <div class="col-lg-10">
+              <input type="text" class="form-control" [(ngModel)]="correo" fullWidth placeholder="correo@gmail.com">
+            </div>
+          </div>
+          <br>
+          <div class="row">
+              <div class="col-lg-2">
+                  <label>Contraseña: </label>
+              </div>
+              <div class="col-lg-10">
+                  <input type="password" class="form-control" [(ngModel)]="contrasena" fullWidth placeholder="xxxxxxxx">
+              </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary btn-block" (click)="login()">Login</button>
+        </nb-card-body> 
+      </nb-card>
+    </div>
+  </div>

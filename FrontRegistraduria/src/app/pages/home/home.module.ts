@@ -2,16 +2,20 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
-import { EnrutarComponent } from './enrutar/enrutar.component';
+import { ListarComponent } from './listar/listar.component';
+import { FormsModule } from '@angular/forms';
+import { NbCardModule } from '@nebular/theme';
 
 
 @NgModule({
   declarations: [
-    EnrutarComponent
+    ListarComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    NbCardModule,
+    FormsModule
   ]
 })
 export class HomeModule { }

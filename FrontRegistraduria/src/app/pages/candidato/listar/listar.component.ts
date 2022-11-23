@@ -10,7 +10,7 @@ import { CandidatoService } from '../../../servicios/candidato.service';
 })
 export class ListarComponent implements OnInit {
 
-  columnas = ['Cédula', 'Nombre Completo', 'Número Resolución', 'Opciones'];
+  columnas = ['Cédula', 'Nombre Completo', 'Número Resolución', 'Partido', 'Opciones'];
   candidatos = []
   constructor(private miServicioCandidato: CandidatoService, private router: Router) { 
     this.listar();

@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Candidato } from '../modelos/candidato.model';
+import { env } from 'process';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,9 @@ export class CandidatoService {
 
   editar(id, infoCandidato) {
     return this.http.put(environment.url_gateway + '/candidatos/' + id, infoCandidato);
+  }
+
+  asignarPartido(id_candidato, id_partido) {
+    return this.http.put(environment.url_gateway + '/candidatos/' + id_candidato + '/partidos/' + id_partido, null);
   }
 }

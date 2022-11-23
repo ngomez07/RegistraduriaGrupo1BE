@@ -1,0 +1,47 @@
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<div class="col-lg-8 center">
+    <nb-card>
+        <nb-card-header>{{modoCreacion ? 'CREAR RESULTADO' : 'EDITAR RESULTADO'}}</nb-card-header>
+        <nb-card-body>
+            
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>Candidato: </label>
+                </div>
+                <div class="col-lg-9">
+                    <select [(ngModel)]="idCandidato" class="form-select" aria-label="Default select example">
+                        <option selected>Selecciona el candidato..</option>
+                        <option *ngFor="let candidato of candidatos" [value]="candidato._id">{{candidato.nombre}} {{" "}} {{candidato.apellido}}</option>
+                        </select>                                  
+                            </div>
+                            </div>
+                            <br>
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>Numero de Mesa: </label>
+                </div>
+                <div class="col-lg-9 form-select">
+                    <select class="form-select" aria-label="Default select example" [(ngModel)]="idMesa">
+                        <option selected>Selecciona la mesa..</option>
+                                <option *ngFor="let mesa of mesas" [value]="mesa._id">{{mesa.numero}}</option>
+                                </select>                                  
+                </div>
+            </div>
+                    <br>
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>Numero de votos: </label>
+                </div>
+                <div class="col-lg-2">
+                    <input type="text" class="form-control" [(ngModel)]="resultado.numero_votos">
+                </div>
+            </div>
+                <br>
+                <div class="row">
+                    <button type="button" class="btn btn-primary center" (click)="ejecutar()">{{modoCreacion ? 'Agregar' : 'Editar'}}</button>
+                </div>
+            
+        </nb-card-body>
+    </nb-card>
+
+</div>

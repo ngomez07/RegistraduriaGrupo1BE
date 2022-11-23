@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Candidato } from '../../../modelos/candidato.model';
 import { CandidatoService } from '../../../servicios/candidato.service';
+import { PartidoService } from '../../../servicios/partido.service';
 
 @Component({
   selector: 'ngx-crear',
@@ -19,9 +20,12 @@ export class CrearComponent implements OnInit {
   }
   modoCreacion = true;
   idCandidato;
-  constructor(private miServicioCandidato: CandidatoService, private router: Router, private rutaActiva: ActivatedRoute) { }
+  partidos = [];
+  idPartido;
+  constructor(private miServicioCandidato: CandidatoService, private miServicioPartido: PartidoService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.listarPartidos();
     if (this.rutaActiva.snapshot.params.id_candidato) {
       this.modoCreacion = false;
       this.idCandidato = this.rutaActiva.snapshot.params.id_candidato;
@@ -37,27 +41,43 @@ export class CrearComponent implements OnInit {
     )
   }
 
+  listarPartidos(){
+    this.miServicioPartido.listar().subscribe(
+      data => {
+        this.partidos = data;
+      }
+    )
+  }
+
   ejecutar(){
     if (this.modoCreacion) {
     this.miServicioCandidato.agregar(this.candidato).subscribe(
       data => {
-        Swal.fire(
-          'Agregado!',
-          'El candidato ha sido agregado.',
-          'success'
-        );
-      this.router.navigateByUrl('/pages/candidato/listar')
+        this.miServicioCandidato.asignarPartido(data['_id'], this.idPartido).subscribe(
+          data => {
+          Swal.fire(
+            'Agregado!',
+            'El candidato ha sido agregado.',
+            'success'
+          );
+        this.router.navigateByUrl('/pages/candidato/listar')
+          }
+        ) 
       }
     )
     } else {
       this.miServicioCandidato.editar(this.idCandidato, this.candidato).subscribe(
         data => {
-          Swal.fire(
-            'Editado!',
-            'El candidato ha sido editado.',
-            'success'
-          );
-        this.router.navigateByUrl('/pages/candidato/listar')
+          this.miServicioCandidato.asignarPartido(data['_id'], this.idPartido).subscribe(
+            data => {
+            Swal.fire(
+              'Editado!',
+              'El candidato ha sido editado.',
+              'success'
+            );
+          this.router.navigateByUrl('/pages/candidato/listar')
+            }
+          ) 
         }
       )
     }

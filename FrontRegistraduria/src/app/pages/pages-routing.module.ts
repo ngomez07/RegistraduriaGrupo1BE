@@ -15,6 +15,10 @@ const routes: Routes = [{
       loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
     },
     {
+      path: 'principal',
+      loadChildren: () => import('./principal/principal.module').then(m => m.PrincipalModule)
+    },
+    {
         path: 'partido',
         loadChildren: () => import('./partido/partido.module').then(m => m.PartidoModule)
     },
@@ -25,6 +29,22 @@ const routes: Routes = [{
     {
       path: 'mesa',
       loadChildren: () => import('./mesa/mesa.module').then(m => m.MesaModule)
+    },
+    {
+      path: 'permiso',
+      loadChildren: () => import('./permiso/permiso.module').then(m => m.PermisoModule)
+    },
+    {
+      path: 'rol',
+      loadChildren: () => import('./rol/rol.module').then(m => m.RolModule)
+    },
+    {
+      path: 'usuario',
+      loadChildren: () => import('./usuario/usuario.module').then(m => m.UsuarioModule)
+    },
+    {
+      path: 'resultado',
+      loadChildren: () => import('./resultado/resultado.module').then(m => m.ResultadoModule)
     },
     {
       path: 'seguridad',
@@ -90,7 +110,7 @@ const routes: Routes = [{
     },
     {
       path: '',
-      redirectTo: 'dashboard',
+      redirectTo: 'principal',
       pathMatch: 'full',
     },
     {

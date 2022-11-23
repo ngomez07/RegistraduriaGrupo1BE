@@ -11,10 +11,10 @@
                 <td>{{candidato.cedula}}</td>
                 <td>{{candidato.nombre}} {{" "}} {{candidato.apellido}}</td>
                 <td>{{candidato.numero_resolucion}}</td>
+                <td>{{candidato.partido?.nombre}}</td>
                 <td>
                     <button type="button" style="margin-right: 15px" class="btn btn-primary" (click)="editar(candidato._id)"><i class="fas fa-pencil-alt"></i></button>
                     <button type="button" style="margin-right: 15px" class="btn btn-danger" (click)="eliminar(candidato)"><i class="fas fa-trash-alt"></i></button>
-                    <button type="button" class="btn btn-dark">Asignar</button>
                 </td>
             </tr>
         </table>

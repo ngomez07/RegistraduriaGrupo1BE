@@ -40,12 +40,14 @@ public class ControladorPermiso {
         }
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
-    public void  delete(@PathVariable String id){
+    public Permiso  delete(@PathVariable String id){
         Permiso permiso = this.miRepositorioPermiso.findById(id).orElse(null);
         if (permiso != null){
             this.miRepositorioPermiso.delete(permiso);
+            return permiso;
+        } else {
+            return null;
         }
     }
 

@@ -1,0 +1,33 @@
+<div class="col-lg-8 center">
+    <nb-card>
+        <nb-card-header>{{modoCreacion ? 'CREAR PERMISO' : 'EDITAR PERMISO'}}</nb-card-header>
+        <!--<nb-card-header *ngIf="modoCreacion">CREAR PERMISO</nb-card-header>
+        <nb-card-header *ngIf="!modoCreacion">EDITAR PERMISO</nb-card-header>-->
+        <nb-card-body>
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>url: </label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" [(ngModel)]="permiso.url">
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-lg-3">
+                    <label>Metodo: </label>
+                </div>
+                <div class="col-lg-9">
+                    <input type="text" class="form-control"  [(ngModel)]="permiso.metodo">
+                </div>
+                </div>
+                <br>
+                <div class="row">
+                    <button type="button" class="btn btn-primary center" (click)="ejecutar()">{{modoCreacion ? 'Agregar' : 'Editar'}}</button>
+                </div>
+            
+        </nb-card-body>
+    </nb-card>
+
+</div>
+

@@ -68,12 +68,15 @@ public class ControladorUsuario {
         }
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+
     @DeleteMapping("{id}")
-    public void delete(@PathVariable String id){
+    public Usuarios delete(@PathVariable String id){
         Usuarios usuario = this.miRepositorioUsuario.findById(id).orElse(null);
         if (usuario != null){
             this.miRepositorioUsuario.delete(usuario);
+            return usuario;
+        } else {
+            return null;
         }
     }
 

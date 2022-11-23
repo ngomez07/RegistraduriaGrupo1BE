@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
     this.miServicioSeguridad.login(infoUsuario).subscribe(
       data => {
         this.miServicioSeguridad.guardarDatosSesion(data);
-        this.router.navigate(['/pages/dashboard']); 
+        this.router.navigate(['/pages/principal']); 
       },
       error =>{
         Swal.fire({

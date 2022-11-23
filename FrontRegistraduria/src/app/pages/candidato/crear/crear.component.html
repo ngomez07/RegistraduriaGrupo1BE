@@ -39,6 +39,18 @@
                         </div>
                         </div>
                         <br>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <label>Partido: </label>
+                            </div>
+                            <div class="col-lg-9">
+                                <select [(ngModel)]="idPartido" class="form-select" aria-label="Default select example">
+                                    <option selected>Selecciona el partido..</option>
+                                    <option *ngFor="let partido of partidos" [value]="partido._id">{{partido.nombre}}</option>
+                                  </select>                                  
+                            </div>
+                            </div>
+                            <br>
                 <div class="row">
                     <button type="button" class="btn btn-primary center" (click)="ejecutar()">{{modoCreacion ? 'Agregar' : 'Editar'}}</button>
                 </div>

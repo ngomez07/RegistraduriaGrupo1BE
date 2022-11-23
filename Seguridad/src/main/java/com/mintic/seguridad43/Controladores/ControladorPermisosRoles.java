@@ -62,12 +62,14 @@ public class ControladorPermisosRoles {
 
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
-    public void  delete(@PathVariable String id){
+    public PermisosRoles  delete(@PathVariable String id){
         PermisosRoles permisosRoles = this.miRepositorioPermisosRoles.findById(id).orElse(null);
         if(permisosRoles != null){
             this.miRepositorioPermisosRoles.delete(permisosRoles);
+            return permisosRoles;
+        } else {
+            return null;
         }
     }
 

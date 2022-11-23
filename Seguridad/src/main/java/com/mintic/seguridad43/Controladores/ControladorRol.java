@@ -38,12 +38,15 @@ public class ControladorRol {
         }
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+
     @DeleteMapping("{id}")
-    public void delete(@PathVariable String id){
+    public Rol delete(@PathVariable String id){
         Rol rol = this.miRepositorioRol.findById(id).orElse(null);
         if (rol != null){
             this.miRepositorioRol.delete(rol);
+            return rol;
+        }else {
+            return null;
         }
     }
 
